@@ -28,7 +28,7 @@ extends:
 
 rules:
   no-plusplus: off
-  no-console: warn
+  no-console: off
   no-restricted-syntax: off
   prefer-arrow-callback: error
   prefer-arrow/prefer-arrow-functions: error
@@ -39,8 +39,9 @@ rules:
   import/extensions: off
   import/prefer-default-export: off
   import/no-cycle: off
-  no-unused-vars": off
+  no-unused-vars: off
   '@typescript-eslint/no-unused-vars': error
   jest/valid-title: off
   jest/no-commented-out-tests: off
   jest/no-focused-tests: warn
+  jest/expect-expect: off

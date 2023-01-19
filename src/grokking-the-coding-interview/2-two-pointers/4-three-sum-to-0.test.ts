@@ -45,15 +45,14 @@ describe('threeSumTo0', () => {
       let i = 0;
       while (i < sortedArray.length) {
         const tripletStart = sortedArray[i];
-        const targetSum = -tripletStart;
 
         let left = i + 1;
         let right = sortedArray.length - 1;
         while (left < right) {
           const currentLeft = sortedArray[left];
           const currentRight = sortedArray[right];
-          const currentSum = currentLeft + currentRight;
-          if (currentSum === targetSum) {
+          const tripletSum = tripletStart + currentLeft + currentRight;
+          if (tripletSum === 0) {
             triplets.push([tripletStart, currentLeft, currentRight]);
             while (currentLeft === sortedArray[left]) {
               left++;
@@ -62,7 +61,7 @@ describe('threeSumTo0', () => {
             // increment `left` to a new number, `right` will be too big, so the
             // outer loop will move it leftwards
             right--;
-          } else if (currentSum < targetSum) {
+          } else if (tripletSum < 0) {
             left++;
           } else {
             right--;

@@ -42,7 +42,7 @@ describe('twoSum', () => {
 
     // space complexity:
     // best (1): just need to store pointers
-    // worse (1): just need to store pointers
+    // worst (1): just need to store pointers
     // average (1): just need to store pointers
     // normal (1)
 

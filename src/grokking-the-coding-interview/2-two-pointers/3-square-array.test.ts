@@ -33,7 +33,7 @@ describe('squareArray', () => {
 
     // space complexity:
     // best (n): create new array
-    // worse (n): create new array
+    // worst (n): create new array
     // average (n): create new array
     // normal (n)
 

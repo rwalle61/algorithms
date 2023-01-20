@@ -31,7 +31,7 @@ describe('threeSumTo0', () => {
 
     // space complexity:
     // best (1)
-    // worse (1)
+    // worst (1)
     // average (1)
     // normal (1)
 

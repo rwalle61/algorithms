@@ -2,11 +2,11 @@
 
 describe('isBinarySearchTree', () => {
   // Assumptions:
-  //   duplicates allowed
+  // duplicates allowed
 
   // BCR:
-  //   runtime: O(number of nodes)
-  //   space: O(longest branch height)
+  // runtime (number of nodes)
+  // space (longest branch height)
 
   class TreeNode {
     public left?: TreeNode;
@@ -33,14 +33,14 @@ describe('isBinarySearchTree', () => {
 
   describe('DFS pre-order traversal', () => {
     // runtime complexity:
-    //   best: O(1) (if immediately clear it is not a binary search tree)
-    //   worst: O(n) (if is binary search tree)
-    //   average: O(n) (but short-circuits when not a binary search tree)
+    // best (1): if immediately clear it is not a binary search tree
+    // worst (n): if is binary search tree
+    // average (n): but short-circuits when not a binary search tree
 
     // space complexity:
-    //   best: O(1) (if immediately clear it is not a binary search tree)
-    //   worse: O(longest branch height = log n for a balanced tree)
-    //   average: O(longest branch height = log n for a balanced tree)
+    // best (1): if immediately clear it is not a binary search tree
+    // worst (longest branch height = log n for a balanced tree)
+    // average (longest branch height = log n for a balanced tree)
 
     const isBinarySearchTree = (
       node: TreeNode | undefined,

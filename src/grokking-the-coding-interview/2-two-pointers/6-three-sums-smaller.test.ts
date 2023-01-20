@@ -33,7 +33,7 @@ describe('threeSumsSmaller', () => {
 
     // space complexity:
     // best (1)
-    // worse (1)
+    // worst (1)
     // average (1)
     // normal (1)
 
@@ -107,7 +107,7 @@ describe('threeSumsSmaller', () => {
 
     // space complexity:
     // best (1)
-    // worse (1)
+    // worst (1)
     // average (1)
     // normal (1)
 

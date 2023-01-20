@@ -38,7 +38,7 @@ describe('removeDuplicates', () => {
 
     // space complexity:
     // best (1): just store pointers
-    // worse (1): just store pointers
+    // worst (1): just store pointers
     // average (1): just store pointers
     // normal (1)
 

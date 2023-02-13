@@ -16,7 +16,7 @@ describe('coinChange', () => {
 
   describe('bottom up with cache', () => {
     // runtime complexity:
-    // best (1): immedately found
+    // best (1): immediately found
     // worst (coins.length * amount): if coins are all prime factors and only need the smallest one
     // average (coins.length * amount)
     // normal (coins.length * amount)

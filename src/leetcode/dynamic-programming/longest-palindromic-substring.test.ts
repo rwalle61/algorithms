@@ -13,9 +13,9 @@ describe('longestPalindromicSubstring', () => {
   // runtime (n^3): for each element, see if it's the start of the longest possible substring
   // space (1): just track indices
 
-  // dp with 2D cache (copied from https://zkf85.github.io/2019/03/26/leetcode-005-longest-palindrome, not sure how it works)
+  // dp with cache (copied from https://zkf85.github.io/2019/03/26/leetcode-005-longest-palindrome)
   // runtime (n^2): for each element, see if it's the start of the longest possible substring
-  // space (n^2): cache solved palindromes
+  // space (n^2 -> n): cache solved palindromes
 
   // expand around centres
   // runtime (n^2): for each element, see if the longest substring around it is the overall longest
@@ -92,7 +92,7 @@ describe('longestPalindromicSubstring', () => {
     });
   });
 
-  describe('dp with 2D cache', () => {
+  describe('dp with cache', () => {
     // runtime complexity:
     // best (1): immediately found
     // worst (n^2)
@@ -101,8 +101,8 @@ describe('longestPalindromicSubstring', () => {
     // TODO understand how this works and how a 1D cache can be used instead
     // space complexity:
     // best (1):
-    // worst (n^2)
-    // normal (n^2)
+    // worst (n^2 -> n)
+    // normal (n^2 -> n)
 
     const longestPalindromicSubstring = (string: string): string => {
       let startOfLongestPalindrome = 0;
@@ -159,14 +159,13 @@ describe('longestPalindromicSubstring', () => {
     });
 
     it('big', () => {
-      const string = 'a'.repeat(10);
-      // const string = 'a'.repeat(1000);
+      const string = 'a'.repeat(1000);
       expect(longestPalindromicSubstring(string)).toBe(string);
     });
 
     it('acceptance', () => {
       expect(longestPalindromicSubstring('babad')).toBe('bab');
-      // expect(longestPalindromicSubstring('cbbd')).toBe('bb');
+      expect(longestPalindromicSubstring('cbbd')).toBe('bb');
     });
   });
 
@@ -181,40 +180,61 @@ describe('longestPalindromicSubstring', () => {
     // worst (n):
     // normal (n)
 
+    type Palindrome = {
+      start: number;
+      end: number;
+    };
+
+    const getLongestPalindrome = (
+      middleLeft: number,
+      middleRight: number,
+      string: string,
+      currentLongest: Palindrome,
+    ): Palindrome => {
+      const newCurrentLongest = currentLongest;
+
+      let left = middleLeft;
+      let right = middleRight;
+
+      while (
+        left >= 0 &&
+        right < string.length &&
+        string[left] === string[right]
+      ) {
+        const isNewPalindromeLongerThanCurrentLongest =
+          right - left > newCurrentLongest.end - newCurrentLongest.start;
+
+        if (isNewPalindromeLongerThanCurrentLongest) {
+          newCurrentLongest.start = left;
+          newCurrentLongest.end = right;
+        }
+        left--;
+        right++;
+      }
+      return newCurrentLongest;
+    };
+
     const longestPalindromicSubstring = (string: string): string => {
-      let startOfLongestPalindrome = 0;
-      let endOfLongestPalindrome = 0;
+      let currentLongest: Palindrome = {
+        start: 0,
+        end: 0,
+      };
 
       for (let middleLeft = 0; middleLeft < string.length; middleLeft++) {
-        for (
-          let middleRight = middleLeft;
-          middleRight <= middleLeft + 1;
-          middleRight++
-        ) {
-          let start = middleLeft;
-          let end = middleRight;
-
-          while (
-            start >= 0 &&
-            end < string.length &&
-            string[start] === string[end]
-          ) {
-            const isNewPalindromeLongerThanCurrentLongest =
-              end - start > endOfLongestPalindrome - startOfLongestPalindrome;
-
-            if (isNewPalindromeLongerThanCurrentLongest) {
-              startOfLongestPalindrome = start;
-              endOfLongestPalindrome = end;
-            }
-            start--;
-            end++;
-          }
-        }
+        currentLongest = getLongestPalindrome(
+          middleLeft,
+          middleLeft,
+          string,
+          currentLongest,
+        );
+        currentLongest = getLongestPalindrome(
+          middleLeft,
+          middleLeft + 1,
+          string,
+          currentLongest,
+        );
       }
-      return string.substring(
-        startOfLongestPalindrome,
-        endOfLongestPalindrome + 1,
-      );
+      return string.substring(currentLongest.start, currentLongest.end + 1);
     };
 
     it('normal cases', () => {

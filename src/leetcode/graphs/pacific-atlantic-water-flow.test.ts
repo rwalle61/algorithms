@@ -252,6 +252,7 @@ describe('cellsToPacificAtlantic', () => {
         .filter(inBounds)
         .filter(canFlowToCell)
         .filter(notSeen)
+        // TODO even with a queue this isn't strictly DFS, as we check the whole level (like BFS) before checking the next depth
         .forEach(([neighbourX, neighbourY]) => {
           cellsToOcean[neighbourY][neighbourX] = true; // so we don't re-check it later
           searchCollection.add([neighbourX, neighbourY]);

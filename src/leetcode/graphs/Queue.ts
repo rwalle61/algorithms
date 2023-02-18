@@ -1,15 +1,15 @@
 export class Queue<T> {
   #queue: T[] = [];
 
-  add(item: T) {
-    return this.#queue.push(item);
+  add(item: T): void {
+    this.#queue.push(item);
   }
 
-  remove() {
+  remove(): T | undefined {
     return this.#queue.shift();
   }
 
-  isEmpty() {
+  isEmpty(): boolean {
     return this.#queue.length === 0;
   }
 }

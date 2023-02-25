@@ -153,7 +153,7 @@ describe('numberOfIslands', () => {
 
         const neighbours = [left, right, up, down];
 
-        const [unseenNeighbour] = neighbours.filter((neighbour) =>
+        const unseenNeighbour = neighbours.find((neighbour) =>
           isUnseenLand(neighbour, grid),
         );
 

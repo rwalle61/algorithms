@@ -1,6 +1,9 @@
 // Given the head of a singly linked list, reverse the list, and return the
 // reversed list
 
+import { link } from './link';
+import { ListNode } from './ListNode';
+
 describe('reverseList', () => {
   // Assumptions:
   // The number of nodes in the list is the range [0, 5000].
@@ -12,40 +15,13 @@ describe('reverseList', () => {
 
   // Solutions:
 
-  // recurse
-  // runtime (n): have to traverse entire list
-  // space (n): recursive stack
-
   // iterate
   // runtime (n): have to traverse entire list
   // space (1): reuse existing nodes
 
-  class ListNode {
-    val: number;
-
-    next: ListNode | null;
-
-    constructor(val?: number, next?: ListNode | null) {
-      this.val = val === undefined ? 0 : val;
-      this.next = next === undefined ? null : next;
-    }
-  }
-
-  const link = (list: number[]): ListNode | null => {
-    if (!list[0]) {
-      return null;
-    }
-
-    const head = new ListNode(list[0]);
-    let current = head;
-
-    for (const element of list.slice(1)) {
-      const node = new ListNode(element);
-      current.next = node;
-      current = node;
-    }
-    return head;
-  };
+  // recurse
+  // runtime (n): have to traverse entire list
+  // space (n): recursive stack
 
   describe('iterate', () => {
     // runtime complexity:

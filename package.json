@@ -2,8 +2,8 @@
   "name": "algorithms",
   "version": "0.1.0",
   "scripts": {
-    "tidy": "tsc --pretty --noEmit && biome format --write .",
-    "test": "jest"
+    "tidy": "tsc --pretty --noEmit && biome format --write . && ruff check --fix && ruff format",
+    "test": "jest && pytest"
   },
   "author": "rwalle61",
   "license": "MIT",

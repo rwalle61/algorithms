@@ -44,8 +44,8 @@ describe('isBinarySearchTree', () => {
 
     const isBinarySearchTree = (
       node: TreeNode | undefined,
-      min = -Infinity,
-      max = Infinity,
+      min = Number.NEGATIVE_INFINITY,
+      max = Number.POSITIVE_INFINITY,
     ): boolean => {
       if (!node) {
         return true;

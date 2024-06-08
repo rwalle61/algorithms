@@ -67,7 +67,7 @@ describe('subarrayProductUnderTarget', () => {
 
     it('all products under target', () => {
       expect(
-        subarrayProductUnderTarget([1, 2, 3, 4], Infinity),
+        subarrayProductUnderTarget([1, 2, 3, 4], Number.POSITIVE_INFINITY),
       ).toIncludeAllMembers([
         [1],
         [2],

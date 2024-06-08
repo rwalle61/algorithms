@@ -2,7 +2,7 @@
 // reversed list
 
 import { link } from './link';
-import { ListNode } from './ListNode';
+import type { ListNode } from './ListNode';
 
 describe('reverseList', () => {
   // Assumptions:

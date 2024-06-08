@@ -1,5 +1,5 @@
-import { link } from './link';
 import { ListNode } from './ListNode';
+import { link } from './link';
 
 describe('mergeKLists', () => {
   // Assumptions:
@@ -49,7 +49,10 @@ describe('mergeKLists', () => {
 
         for (let i = 0; i < lists.length; i++) {
           const list = lists[i];
-          if (list && list.val < (lists[minIndex]?.val ?? Infinity)) {
+          if (
+            list &&
+            list.val < (lists[minIndex]?.val ?? Number.POSITIVE_INFINITY)
+          ) {
             minIndex = i;
           }
         }
@@ -58,7 +61,7 @@ describe('mergeKLists', () => {
           break;
         }
 
-        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+        // biome-ignore lint/style/noNonNullAssertion: <explanation>
         current.next = lists[minIndex]!;
         current = current.next;
 
@@ -220,7 +223,7 @@ describe('mergeKLists', () => {
         listsLength = reinsertionIndex;
       }
 
-      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+      // biome-ignore lint/style/noNonNullAssertion: <explanation>
       return lists[0]!;
     };
 

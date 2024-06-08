@@ -39,7 +39,7 @@ describe('sortNestedArray', () => {
         const tempArray: number[] = [];
 
         for (const char of serialisedArray) {
-          const number = parseInt(char, 10);
+          const number = Number.parseInt(char, 10);
           const isNumber = !Number.isNaN(number);
           if (isNumber) {
             tempArray.push(number);
@@ -51,9 +51,9 @@ describe('sortNestedArray', () => {
 
         for (let i = 0; i < serialisedArray.length; i++) {
           const char = serialisedArray[i];
-          const isNumber = !Number.isNaN(parseInt(char, 10));
+          const isNumber = !Number.isNaN(Number.parseInt(char, 10));
           if (isNumber) {
-            // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+            // biome-ignore lint/style/noNonNullAssertion: <explanation>
             sortedArray.push(tempArray.shift()!.toString());
           } else {
             sortedArray.push(char);
@@ -111,7 +111,7 @@ describe('sortNestedArray', () => {
         for (let i = 0; i < array.length; i++) {
           const element = array[i];
           if (typeof element === 'number') {
-            // eslint-disable-next-line @typescript-eslint/no-non-null-assertion, no-param-reassign
+            // biome-ignore lint/style/noNonNullAssertion: <explanation>
             array[i] = tempArray.shift()!;
           } else {
             traverseArrayAndInsert(element, tempArray);

@@ -1,5 +1,5 @@
-import { bigPrerequisites } from './course-schedule-big-prerequisites';
 import { Queue } from './Queue';
+import { bigPrerequisites } from './course-schedule-big-prerequisites';
 
 describe('canFinish', () => {
   // Assumptions:
@@ -174,7 +174,7 @@ describe('canFinish', () => {
       const path = new Set<number>();
 
       while (!queue.isEmpty()) {
-        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+        // biome-ignore lint/style/noNonNullAssertion: <explanation>
         const course = queue.remove()!;
 
         const prerequisites = adjacencyList.get(course);

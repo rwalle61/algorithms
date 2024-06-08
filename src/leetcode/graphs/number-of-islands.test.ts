@@ -140,7 +140,7 @@ describe('numberOfIslands', () => {
 
     const markIslandSeen = (searchStack: Stack<Coordinates>, grid: Grid) => {
       while (!searchStack.isEmpty()) {
-        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+        // biome-ignore lint/style/noNonNullAssertion: <explanation>
         const [x, y] = searchStack.peek()!;
 
         // eslint-disable-next-line no-param-reassign
@@ -239,7 +239,7 @@ describe('numberOfIslands', () => {
 
     const markIslandSeen = (searchQueue: Queue<Coordinates>, grid: Grid) => {
       while (!searchQueue.isEmpty()) {
-        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+        // biome-ignore lint/style/noNonNullAssertion: <explanation>
         const [x, y] = searchQueue.remove()!;
 
         // eslint-disable-next-line no-param-reassign

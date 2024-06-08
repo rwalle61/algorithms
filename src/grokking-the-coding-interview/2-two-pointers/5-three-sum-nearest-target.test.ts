@@ -40,7 +40,7 @@ describe('threeSumNearestTarget', () => {
     const threeSumNearestTarget = (array: number[], target: number): number => {
       const sortedArray = array.sort((a, b) => a - b);
 
-      let nearestSum = Infinity;
+      let nearestSum = Number.POSITIVE_INFINITY;
 
       let i = 0;
       while (i < sortedArray.length) {
@@ -82,9 +82,9 @@ describe('threeSumNearestTarget', () => {
     });
 
     it('edge: array length < 3', () => {
-      expect(threeSumNearestTarget([], 0)).toBe(Infinity);
-      expect(threeSumNearestTarget([0], 0)).toBe(Infinity);
-      expect(threeSumNearestTarget([0, 0], 0)).toBe(Infinity);
+      expect(threeSumNearestTarget([], 0)).toBe(Number.POSITIVE_INFINITY);
+      expect(threeSumNearestTarget([0], 0)).toBe(Number.POSITIVE_INFINITY);
+      expect(threeSumNearestTarget([0, 0], 0)).toBe(Number.POSITIVE_INFINITY);
     });
 
     it('acceptance', () => {

@@ -1,5 +1,5 @@
+import type { ListNode } from './ListNode';
 import { link } from './link';
-import { ListNode } from './ListNode';
 
 describe('reorderList', () => {
   // Assumptions:
@@ -41,7 +41,7 @@ describe('reorderList', () => {
           fast = fast.next;
         }
         const penultimateNode = fast;
-        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+        // biome-ignore lint/style/noNonNullAssertion: <explanation>
         const lastNode = fast.next!;
 
         lastNode.next = slow.next;

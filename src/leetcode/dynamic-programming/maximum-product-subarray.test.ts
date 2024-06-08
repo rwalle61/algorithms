@@ -34,7 +34,7 @@ describe('maxProduct', () => {
     // normal (1)
 
     const maxProduct = (nums: number[]): number => {
-      let max = -Infinity;
+      let max = Number.NEGATIVE_INFINITY;
 
       for (let i = 0; i < nums.length; i++) {
         let current = nums[i];
@@ -52,7 +52,7 @@ describe('maxProduct', () => {
     };
 
     it('empty array', () => {
-      expect(maxProduct([])).toBe(-Infinity);
+      expect(maxProduct([])).toBe(Number.NEGATIVE_INFINITY);
     });
 
     it('array all positive', () => {
@@ -125,7 +125,7 @@ describe('maxProduct', () => {
       let seenANegative = false;
       let upToFirstNegative = DEFAULT_PRODUCT;
 
-      let max = -Infinity;
+      let max = Number.NEGATIVE_INFINITY;
 
       for (const num of nums) {
         allNums *= num;
@@ -152,14 +152,14 @@ describe('maxProduct', () => {
           ...[positives, allNums, allNums / upToFirstNegative].filter(
             (product) => product !== DEFAULT_PRODUCT,
           ),
-          seenANegative ? allNums : -Infinity,
+          seenANegative ? allNums : Number.NEGATIVE_INFINITY,
         );
       }
       return max;
     };
 
     it('empty array', () => {
-      expect(maxProduct([])).toBe(-Infinity);
+      expect(maxProduct([])).toBe(Number.NEGATIVE_INFINITY);
     });
 
     it('array all positive', () => {
@@ -232,7 +232,7 @@ describe('maxProduct', () => {
       let max = DEFAULT_PRODUCT;
       let min = DEFAULT_PRODUCT;
 
-      let result = -Infinity;
+      let result = Number.NEGATIVE_INFINITY;
 
       for (const num of nums) {
         [max, min] = [
@@ -245,7 +245,7 @@ describe('maxProduct', () => {
     };
 
     it('empty array', () => {
-      expect(maxProduct([])).toBe(-Infinity);
+      expect(maxProduct([])).toBe(Number.NEGATIVE_INFINITY);
     });
 
     it('array all positive', () => {

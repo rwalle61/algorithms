@@ -228,7 +228,7 @@ describe('cellsToPacificAtlantic', () => {
       .map(() => new Array<boolean>(heights[0].length).fill(false));
 
     while (!searchCollection.isEmpty()) {
-      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+      // biome-ignore lint/style/noNonNullAssertion: <explanation>
       const [x, y] = searchCollection.remove()!;
 
       cellsToOcean[y][x] = true;

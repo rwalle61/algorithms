@@ -59,7 +59,7 @@ describe('numDecodings', () => {
           s[i - 1] !== '0' &&
           s[i] !== '0' &&
           s[i + 1] !== '0' &&
-          parseInt(`${s[i - 1]}${s[i]}`, 10) <= 26
+          Number.parseInt(`${s[i - 1]}${s[i]}`, 10) <= 26
         ) {
           currentNum += temp;
         }

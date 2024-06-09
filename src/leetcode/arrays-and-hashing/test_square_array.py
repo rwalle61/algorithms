@@ -1,3 +1,7 @@
+import pytest
+
+# https://leetcode.com/problems/squares-of-a-sorted-array/description/
+
 # Assumptions:
 # length >= 0
 # non-decreasing
@@ -5,22 +9,31 @@
 
 # Best Computational Runtime:
 # runtime (n): need to square each element. probably smart solution doesn't have to move too much
-# space (1)
+# space (1) if not counting output
 
 # Solutions:
 
 # brute
 # runtime (n log n): square (n) then sort (n log n)
-# space: (1) can use unstable n log n sort (heapsort)
+# space (n) via python sort, (log n) via java sort
+# space (1): can use unstable n log n sort (heapsort)
 
-# 2 pointers
-# runtime (n): pointers at closest to 0, square on each step outwards
+# 2 pointers inside out
+# runtime (n): pointers from closest to 0, inside-out, squaring
 # space (1)
 
-# 2 pointers simpler
-# runtime (n): pointers at ends, square on each step inwards
+# 2 pointers outside in (simpler)
+# runtime (n): pointers outside-in, squaring
 # space (1)
 
+test_cases = [
+    ([], []),
+    ([1], [1]),
+    ([0, 1], [0, 1]),
+    ([-2, -1, 0, 1, 2], [0, 1, 1, 4, 4]),
+    ([-4, -1, 0, 3, 10], [0, 1, 9, 16, 100]),
+    ([-7, -3, 2, 3, 11], [4, 9, 9, 49, 121]),
+]
 
 def square_array_brute(input_array: list[int]) -> list[int]:
     output_array = []
@@ -33,11 +46,12 @@ def square_array_brute(input_array: list[int]) -> list[int]:
     return output_array
 
 
-def test_square_array_brute() -> None:
-    assert square_array_brute([]) == []
-    assert square_array_brute([1]) == [1]
-    assert square_array_brute([-4, -1, 0, 3, 10]) == [0, 1, 9, 16, 100]
-    assert square_array_brute([-7, -3, 2, 3, 11]) == [4, 9, 9, 49, 121]
+@pytest.mark.parametrize(
+    "input,expected",
+    test_cases,
+)
+def test_square_array_brute(input, expected) -> None:
+    assert square_array_brute(input) == expected
 
 
 def square_array_2_pointers_inside_out(input_array: list[int]) -> list[int]:
@@ -86,18 +100,12 @@ def square_array_2_pointers_inside_out(input_array: list[int]) -> list[int]:
     return output_array
 
 
-def test_square_array_2_pointers_inside_out() -> None:
-    assert square_array_2_pointers_inside_out([]) == []
-
-    assert square_array_2_pointers_inside_out([1]) == [1]
-
-    assert square_array_2_pointers_inside_out([0, 1]) == [0, 1]
-    assert square_array_2_pointers_inside_out([-2, 1]) == [1, 4]
-    assert square_array_2_pointers_inside_out([-1, 2]) == [1, 4]
-
-    assert square_array_2_pointers_inside_out([-2, -1, 0, 1, 2]) == [0, 1, 1, 4, 4]
-    assert square_array_2_pointers_inside_out([-4, -1, 0, 3, 10]) == [0, 1, 9, 16, 100]
-    assert square_array_2_pointers_inside_out([-7, -3, 2, 3, 11]) == [4, 9, 9, 49, 121]
+@pytest.mark.parametrize(
+    "input,expected",
+    test_cases,
+)
+def test_square_array_2_pointers_inside_out(input, expected) -> None:
+    assert square_array_2_pointers_inside_out(input) == expected
 
 
 def square_array_2_pointers_outside_in(input_array: list[int]) -> list[int]:
@@ -126,15 +134,9 @@ def square_array_2_pointers_outside_in(input_array: list[int]) -> list[int]:
     return output_array
 
 
-def test_square_array_2_pointers_outside_in() -> None:
-    assert square_array_2_pointers_outside_in([]) == []
-
-    assert square_array_2_pointers_outside_in([1]) == [1]
-
-    assert square_array_2_pointers_outside_in([0, 1]) == [0, 1]
-    assert square_array_2_pointers_outside_in([-2, 1]) == [1, 4]
-    assert square_array_2_pointers_outside_in([-1, 2]) == [1, 4]
-
-    assert square_array_2_pointers_outside_in([-2, -1, 0, 1, 2]) == [0, 1, 1, 4, 4]
-    assert square_array_2_pointers_outside_in([-4, -1, 0, 3, 10]) == [0, 1, 9, 16, 100]
-    assert square_array_2_pointers_outside_in([-7, -3, 2, 3, 11]) == [4, 9, 9, 49, 121]
+@pytest.mark.parametrize(
+    "input,expected",
+    test_cases,
+)
+def test_square_array_2_pointers_outside_in(input, expected) -> None:
+    assert square_array_2_pointers_outside_in(input) == expected

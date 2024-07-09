@@ -22,7 +22,7 @@ import pytest
 # runtime (n log n): sort then find first missing number
 # space (1) if sort in place, else (n)
 
-# cache (array)
+# cache (set)
 # runtime (n): check whole list
 # space (n): store collection of n-1 numbers
 # TODO or can we reuse the array?
